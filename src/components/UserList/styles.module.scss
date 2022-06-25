@@ -1,0 +1,45 @@
+.tableHeader {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  span {
+    color: var(--gray-500);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.tableBody {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-items: center;
+
+  padding: 6px 2px;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.2s;
+
+  span {
+    color: var(--gray-100);
+    font-size: 18px;
+    font-weight: 500;
+
+    & + span {
+      color: var(--gray-200);
+      font-size: 14px;
+    }
+  }
+
+  &:hover {
+    background-color: var(--gray-800);
+  }
+}

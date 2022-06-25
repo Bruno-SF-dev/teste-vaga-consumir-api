@@ -1,0 +1,16 @@
+.container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.todoContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  strong {
+    text-transform: capitalize;
+  }
+}
