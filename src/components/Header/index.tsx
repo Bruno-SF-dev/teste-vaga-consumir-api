@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
-function Header() {
+export function Header() {
   return (
     <header className={styles.container}>
       <Link to="/">
@@ -10,5 +10,3 @@ function Header() {
     </header>
   );
 }
-
-export { Header };

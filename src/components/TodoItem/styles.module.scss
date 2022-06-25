@@ -1,0 +1,9 @@
+.todoContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  strong {
+    text-transform: capitalize;
+  }
+}

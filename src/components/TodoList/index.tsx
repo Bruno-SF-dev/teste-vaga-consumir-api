@@ -1,30 +1,23 @@
-import { Checkbox } from "../Checkbox";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { TodoListContext } from "../../contexts/TodoListContext";
+import { TodoItem } from "../TodoItem";
+
 import styles from "./styles.module.scss";
 
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+export function TodoList() {
+  const { userId } = useParams();
+  const { todoList, getUserTodo } = useContext(TodoListContext);
 
-interface TodoListProps {
-  list: Todo[];
-  onCheckTodo: (todoId: number, completed: boolean) => Promise<void>;
-}
+  useEffect(() => {
+    getUserTodo(userId);
+  }, []);
 
-function TodoList({ list, onCheckTodo }: TodoListProps) {
   return (
     <div className={styles.container}>
-      {list.map((todo) => (
-        <div key={todo.id} className={styles.todoContainer}>
-          <Checkbox todo={todo} onCheckTodo={onCheckTodo} />
-
-          <strong>{todo.title}</strong>
-        </div>
+      {todoList.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );
 }
-
-export { TodoList };

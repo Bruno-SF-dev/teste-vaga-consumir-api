@@ -1,8 +1,4 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-
   span {
     color: var(--gray-500);
     font-size: 14px;
@@ -11,7 +7,7 @@
   }
 
   strong {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--gray-100);
     text-transform: none;

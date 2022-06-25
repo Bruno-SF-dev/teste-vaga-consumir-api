@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../services/api";
+import { Loader } from "../Loader";
 
 import styles from "./styles.module.scss";
 
@@ -10,24 +11,44 @@ interface User {
   email: string;
 }
 
-function UserList() {
+export function UserList() {
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [failedReq, setFailedReq] = useState(false);
 
   useEffect(() => {
     async function getUsers() {
-      const res = await api.get("/users");
+      try {
+        const res = await api.get("/users");
 
-      const usersFormatted = res.data.map((user: any) => ({
-        userId: user.id,
-        name: user.name,
-        email: user.email,
-      }));
+        const usersFormatted = res.data.map((user: any) => ({
+          userId: user.id,
+          name: user.name,
+          email: user.email,
+        }));
 
-      setUsers(usersFormatted);
+        setUsers(usersFormatted);
+      } catch {
+        setFailedReq(true);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     getUsers();
   }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (failedReq) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        Não foi possível buscar os usuários.
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -53,5 +74,3 @@ function UserList() {
     </div>
   );
 }
-
-export { UserList };

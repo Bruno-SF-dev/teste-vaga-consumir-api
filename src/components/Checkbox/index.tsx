@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { TodoListContext } from "../../contexts/TodoListContext";
+
 import styles from "./styles.module.scss";
 
 interface CheckboxProps {
@@ -5,10 +8,11 @@ interface CheckboxProps {
     id: number;
     completed: boolean;
   };
-  onCheckTodo: (todoId: number, completed: boolean) => Promise<void>;
 }
 
-function Checkbox({ todo, onCheckTodo }: CheckboxProps) {
+export function Checkbox({ todo }: CheckboxProps) {
+  const { onCheckTodo } = useContext(TodoListContext);
+
   return (
     <div className={styles.container}>
       <label>
@@ -23,5 +27,3 @@ function Checkbox({ todo, onCheckTodo }: CheckboxProps) {
     </div>
   );
 }
-
-export { Checkbox };
