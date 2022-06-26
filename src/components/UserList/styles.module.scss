@@ -9,6 +9,16 @@
     font-weight: 700;
     text-transform: uppercase;
   }
+
+  @media (max-width: 480px) {
+    display: flex;
+
+    span {
+      & + span {
+        display: none;
+      }
+    }
+  }
 }
 
 .tableBody {
@@ -41,5 +51,15 @@
 
   &:hover {
     background-color: var(--gray-800);
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+
+    span {
+      & + span {
+        display: none;
+      }
+    }
   }
 }

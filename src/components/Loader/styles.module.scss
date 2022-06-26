@@ -18,4 +18,12 @@
       }
     }
   }
+
+  &.small {
+    div {
+      width: 18px;
+      height: 18px;
+      border-width: 2px;
+    }
+  }
 }

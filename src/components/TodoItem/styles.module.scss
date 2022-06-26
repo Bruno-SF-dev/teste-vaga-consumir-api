@@ -3,7 +3,16 @@
   gap: 16px;
   align-items: center;
 
+  padding: 8px 4px;
+  border: 1px solid var(--gray-800);
+  border-radius: 4px;
+  transition: all 0.2s;
+
   strong {
     text-transform: capitalize;
+  }
+
+  &:hover {
+    background-color: var(--gray-800);
   }
 }

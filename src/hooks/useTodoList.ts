@@ -51,12 +51,10 @@ export function useTodoList() {
       completed: false,
     };
 
-    setTodoList([newTodo, ...todoList]);
-
     const { data } = await api.post(`/todos`, newTodo);
-  }
 
-  console.log(todoList);
+    setTodoList([newTodo, ...todoList]);
+  }
 
   return {
     todoList,

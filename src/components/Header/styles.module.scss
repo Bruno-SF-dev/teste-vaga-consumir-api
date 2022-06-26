@@ -1,6 +1,14 @@
 .container {
-  max-width: 1200px;
-  padding: 30px 20px;
-  margin: 0 auto;
+  border-bottom: 1px solid var(--gray-800);
+}
+
+.content {
   display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+
+  span {
+    color: var(--purple);
+  }
 }

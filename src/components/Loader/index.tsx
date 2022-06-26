@@ -1,8 +1,14 @@
 import styles from "./styles.module.scss";
 
-export function Loader() {
+interface LoaderProps {
+  small: boolean;
+}
+
+export function Loader({ small = false }: LoaderProps) {
+  const smallActive = small ? styles.small : "";
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${smallActive}`}>
       <div></div>
     </div>
   );

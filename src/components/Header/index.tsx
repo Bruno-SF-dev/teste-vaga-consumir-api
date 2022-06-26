@@ -4,9 +4,13 @@ import styles from "./styles.module.scss";
 export function Header() {
   return (
     <header className={styles.container}>
-      <Link to="/">
-        <h2>Consumir API</h2>
-      </Link>
+      <div className={styles.content}>
+        <Link to="/">
+          <h2>
+            Consumir API - <span>TODO</span>
+          </h2>
+        </Link>
+      </div>
     </header>
   );
 }
