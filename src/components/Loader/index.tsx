@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 
 interface LoaderProps {
-  small: boolean;
+  small?: boolean;
 }
 
 export function Loader({ small = false }: LoaderProps) {
