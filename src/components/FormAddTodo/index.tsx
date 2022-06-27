@@ -1,4 +1,5 @@
 import { useContext, useState, ChangeEvent, FormEvent } from "react";
+import { toast } from "react-toastify";
 import { TodoListContext } from "../../contexts/TodoListContext";
 import { Loader } from "../Loader";
 
@@ -9,6 +10,16 @@ export function FormAddTodo() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [value, setValue] = useState("");
 
+  const reqSuccessToast = () =>
+    toast("Sucesso na requição", {
+      type: "success",
+    });
+
+  const reqFailedToast = () =>
+    toast("Falha na requisição", {
+      type: "error",
+    });
+
   async function handleAddTodo(e: FormEvent) {
     e.preventDefault();
 
@@ -18,10 +29,16 @@ export function FormAddTodo() {
 
     setIsSubmitting(true);
 
-    await onAddTodo(value);
+    try {
+      await onAddTodo(value);
 
-    setValue("");
-    setIsSubmitting(false);
+      reqSuccessToast();
+      setValue("");
+    } catch {
+      reqFailedToast();
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   function handleChangeValue(e: ChangeEvent<HTMLInputElement>) {

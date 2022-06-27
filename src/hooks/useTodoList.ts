@@ -51,9 +51,13 @@ export function useTodoList() {
       completed: false,
     };
 
-    const { data } = await api.post(`/todos`, newTodo);
+    try {
+      const { data } = await api.post(`/todos`, newTodo);
 
-    setTodoList([newTodo, ...todoList]);
+      setTodoList([newTodo, ...todoList]);
+    } catch (err) {
+      throw new Error("Request failed");
+    }
   }
 
   return {
